@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.1.final using JasperReports Library version 6.20.1-7584acb244139816654f64e2fd57a00d3e31921e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Simple_Blue_1" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e2b0ba88-8ba2-428a-bf90-2eef4c26e907">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (4)"/>
+	<queryString language="SQL">
+		<![CDATA[select * from movie]]>
+	</queryString>
+		<field name="id" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="id"/>
+			<property name="com.jaspersoft.studio.field.label" value="id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="movie"/>
+		</field>
+		<field name="genre" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="genre"/>
+			<property name="com.jaspersoft.studio.field.label" value="genre"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="movie"/>
+		</field>
+		<field name="is_showing" class="java.lang.Boolean">
+			<property name="com.jaspersoft.studio.field.name" value="is_showing"/>
+			<property name="com.jaspersoft.studio.field.label" value="is_showing"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="movie"/>
+		</field>
+		<field name="movie_name" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="movie_name"/>
+			<property name="com.jaspersoft.studio.field.label" value="movie_name"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="movie"/>
+		</field>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[select * from movie]]>
+	</queryString>
+	<field name="ORDERID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ORDERID"/>
+		<property name="com.jaspersoft.studio.field.label" value="ORDERID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+	</field>
+	<field name="CUSTOMERID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CUSTOMERID"/>
+		<property name="com.jaspersoft.studio.field.label" value="CUSTOMERID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+	</field>
+	<field name="EMPLOYEEID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="EMPLOYEEID"/>
+		<property name="com.jaspersoft.studio.field.label" value="EMPLOYEEID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+	</field>
+	<field name="ORDERDATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="ORDERDATE"/>
+		<property name="com.jaspersoft.studio.field.label" value="ORDERDATE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+	</field>
+	<field name="REQUIREDDATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="REQUIREDDATE"/>
+		<property name="com.jaspersoft.studio.field.label" value="REQUIREDDATE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+	</field>
+	<field name="SHIPPEDDATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="SHIPPEDDATE"/>
+		<property name="com.jaspersoft.studio.field.label" value="SHIPPEDDATE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="48" width="130" height="20" forecolor="#761A79" uuid="26a18de8-80fb-4981-944c-13cd20649bc3"/>
+				<textElement textAlignment="Left">
+					<font fontName="Trebuchet MS" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[E-ticket bioskop]]></text>
+			</staticText>
+			<image>
+				<reportElement x="-30" y="-10" width="249" height="67" uuid="bf641090-8ec7-4f94-93a5-d2e1d7493faa"/>
+				<box leftPadding="0"/>
+				<imageExpression><![CDATA["I:/code/.springboot/challenge 5/picture/image-removebg-preview.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="-20" y="76" width="595" height="1" uuid="4fe33d8a-edf3-4cb3-845b-3a7145e2160a"/>
+			</line>
+			<image>
+				<reportElement x="360" y="0" width="208" height="67" uuid="36fefd35-a0e3-42db-92b0-34b24d8f0c8a">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["I:/code/.springboot/challenge 5/picture/booking code.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="420" y="0" width="100" height="20" uuid="9c4d230d-601c-40e7-9ee0-00355539c686">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<text><![CDATA[Kode Booking Anda]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="420" y="22" width="100" height="20" forecolor="#FCFCFC" uuid="4af60ad6-4323-45dc-a153-5d3e89824566">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Trebuchet MS" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ORDERID}.decode( String )]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

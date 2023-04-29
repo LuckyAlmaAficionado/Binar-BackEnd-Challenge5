@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.1.final using JasperReports Library version 6.20.1-7584acb244139816654f64e2fd57a00d3e31921e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20"
+              topMargin="20" bottomMargin="20" uuid="26cfac1d-008e-4039-ac48-123e3e2b7086">
+
+    <field name="id" class="java.lang.Long">
+    </field>
+    <field name="bookingCode" class="java.lang.String">
+    </field>
+    <field name="cinemaName" class="java.lang.String">
+    </field>
+    <field name="customerName" class="java.lang.String">
+    </field>
+    <field name="date" class="java.util.Date">
+    </field>
+    <field name="endTime" class="java.sql.Time">
+    </field>
+    <field name="movieName" class="java.lang.String">
+    </field>
+    <field name="price" class="java.lang.Integer">
+    </field>
+    <field name="seatId" class="java.lang.String">
+    </field>
+    <field name="startTime" class="java.sql.Time">
+    </field>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="82" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="48" width="130" height="20" forecolor="#761A79"
+                               uuid="26a18de8-80fb-4981-944c-13cd20649bc3"/>
+                <textElement textAlignment="Left">
+                    <font fontName="Trebuchet MS" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[E-ticket bioskop]]></text>
+            </staticText>
+            <image>
+                <reportElement x="-30" y="-10" width="249" height="67" uuid="bf641090-8ec7-4f94-93a5-d2e1d7493faa"/>
+                <box leftPadding="0"/>
+                <imageExpression>
+                    <![CDATA["D:/code/.springboot/challenge 5/picture/image-removebg-preview.png"]]></imageExpression>
+            </image>
+            <line>
+                <reportElement x="-20" y="76" width="595" height="1" uuid="4fe33d8a-edf3-4cb3-845b-3a7145e2160a"/>
+            </line>
+            <image>
+                <reportElement x="360" y="0" width="208" height="67" uuid="36fefd35-a0e3-42db-92b0-34b24d8f0c8a">
+                    <property name="com.jaspersoft.studio.unit.y" value="px"/>
+                </reportElement>
+                <imageExpression>
+                    <![CDATA["D:/code/.springboot/challenge 5/picture/booking code.png"]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement x="420" y="0" width="100" height="20" uuid="9c4d230d-601c-40e7-9ee0-00355539c686">
+                    <property name="com.jaspersoft.studio.unit.y" value="px"/>
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Trebuchet MS" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Kode Booking Anda]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="440" y="20" width="80" height="22" forecolor="#FFFFFF"
+                               uuid="55553dae-97f3-4715-94c7-1b6e620ddda8">
+                    <property name="com.jaspersoft.studio.unit.y" value="px"/>
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="SansSerif" size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{bookingCode}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <detail>
+        <band height="225" splitType="Stretch">
+            <image>
+                <reportElement x="400" y="10" width="30" height="25" uuid="6f6453a5-0203-4cda-b89a-865f583167f8"/>
+                <imageExpression>
+                    <![CDATA["D:/code/.springboot/challenge 5/picture/icons8-box-important-100.png"]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement x="430" y="10" width="108" height="30" forecolor="#761A79"
+                               uuid="9edb292f-1809-465f-9aec-8e962685380e"/>
+                <textElement textAlignment="Left">
+                    <font fontName="SansSerif" size="9"/>
+                    <paragraph lineSpacing="Single" lineSpacingSize="2.0"/>
+                </textElement>
+                <text><![CDATA[waktu tertera adalah
+waktu bioskop setempat]]></text>
+            </staticText>
+            <image>
+                <reportElement x="200" y="10" width="30" height="25" uuid="6c47134c-a540-4b6d-9ba1-73300b35411e"/>
+                <imageExpression>
+                    <![CDATA["D:/code/.springboot/challenge 5/picture/icons8-box-important-100.png"]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement x="230" y="10" width="140" height="30" forecolor="#761A79"
+                               uuid="8dbbf139-6874-47fb-b167-ba856b2ab308"/>
+                <textElement textAlignment="Left">
+                    <font fontName="SansSerif" size="9"/>
+                    <paragraph lineSpacing="Single" lineSpacingSize="2.0"/>
+                </textElement>
+                <text><![CDATA[penukaran code paling lambat
+10 menit sebelum film diputar]]></text>
+            </staticText>
+            <image>
+                <reportElement x="0" y="10" width="30" height="25" uuid="90bba375-7129-4360-bf41-11c7b4432287"/>
+                <imageExpression>
+                    <![CDATA["D:/code/.springboot/challenge 5/picture/icons8-ticket-100.png"]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement x="30" y="10" width="140" height="30" forecolor="#761A79"
+                               uuid="ce03d05b-0d3a-4c4a-8ce4-0f5d14e8102f"/>
+                <textElement textAlignment="Left">
+                    <font fontName="SansSerif" size="9"/>
+                    <paragraph lineSpacing="Single" lineSpacingSize="2.0"/>
+                </textElement>
+                <text><![CDATA[penukaran code paling lambat
+10 menit sebelum film diputar]]></text>
+            </staticText>
+            <rectangle radius="10">
+                <reportElement x="2" y="60" width="550" height="150" uuid="52799351-f38d-4982-8a03-9f17903c2d1c"/>
+            </rectangle>
+            <line>
+                <reportElement x="2" y="90" width="549" height="1" uuid="dd9d9942-d421-4846-83c9-088f3d94c8fc"/>
+            </line>
+            <textField>
+                <reportElement x="30" y="110" width="110" height="48" uuid="740fb7d9-630b-4a47-bc40-93d861288a4b"/>
+                <textElement verticalAlignment="Top">
+                    <font fontName="Trebuchet MS" size="13" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{customerName}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="10" y="60" width="140" height="30" uuid="761380d5-5acd-4e3b-b5f1-a045276e0cd8">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <box topPadding="3"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Trebuchet MS" size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{date}.toLocaleString()]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="156" y="140" width="100" height="30" uuid="6eccdf4c-12f0-48dd-843d-86ae9e9ffb7c"/>
+                <textFieldExpression><![CDATA[String.valueOf($F{startTime}.toLocalTime())]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="300" y="140" width="100" height="30" uuid="2e3caeb6-b689-4f1d-b601-86e6fc61bfe4"/>
+                <textFieldExpression><![CDATA[$F{endTime}.toLocalTime()]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="256" y="60" width="287" height="30" uuid="0bfc597d-93c8-4a99-a4d4-1cb8207726f1"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font fontName="Trebuchet MS" size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{movieName}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="438" y="170" width="100" height="30" uuid="2e247cd1-d085-4f67-bf9e-60de019ed92e"/>
+                <textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <pageFooter>
+        <band height="54" splitType="Stretch">
+            <line>
+                <reportElement x="-20" y="5" width="595" height="1" uuid="826413a8-2363-4731-b024-23d79689df33"/>
+            </line>
+        </band>
+    </pageFooter>
+</jasperReport>

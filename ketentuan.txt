@@ -1,0 +1,21 @@
+/api/v1/movie
+1. post v
+2. update v
+3. delete v
+4. get -> yang sedang tayang   v
+
+/api/v1/schedule
+1. post -> jadwal film tertentu v
+
+/api/v1/user
+1. post v
+2. update v
+3. delete v
+
+/api/v1/studio
+
+/api/v1/price
+
+/api/v1/seat
+
+/api/v1/reservation
