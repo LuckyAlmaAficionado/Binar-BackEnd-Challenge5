@@ -32,6 +32,13 @@ public class Movie {
     @JoinColumn(name = "movieFk", referencedColumnName = "movieId", insertable = true, updatable = true)
     private List<Schedule> schedulesList;
 
+    public Movie(Long movieId, String movieName, String genre, Boolean isShowing) {
+        this.movieId = movieId;
+        this.movieName = movieName;
+        this.genre = genre;
+        this.isShowing = isShowing;
+    }
+
     public Movie(String movieName, String genre, Boolean isShowing) {
         this.movieName = movieName;
         this.genre = genre;
