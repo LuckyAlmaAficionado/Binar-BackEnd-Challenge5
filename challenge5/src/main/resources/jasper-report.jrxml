@@ -6,26 +6,26 @@
               name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20"
               topMargin="20" bottomMargin="20" uuid="26cfac1d-008e-4039-ac48-123e3e2b7086">
 
-    <field name="id" class="java.lang.Long">
+    <field name="bookingId" class="java.lang.Long">
     </field>
     <field name="bookingCode" class="java.lang.String">
     </field>
-    <field name="cinemaName" class="java.lang.String">
+<!--    <field name="movieName" class="java.lang.String">-->
+<!--    </field>-->
+    <field name="userCredential" class="java.lang.String">
     </field>
-    <field name="customerName" class="java.lang.String">
-    </field>
-    <field name="date" class="java.util.Date">
-    </field>
-    <field name="endTime" class="java.sql.Time">
+<!--    <field name="date" class="java.util.Date">-->
+<!--    </field>-->
+    <field name="startTime" class="java.sql.Time">
     </field>
     <field name="movieName" class="java.lang.String">
     </field>
     <field name="price" class="java.lang.Integer">
     </field>
-    <field name="seatId" class="java.lang.String">
-    </field>
-    <field name="startTime" class="java.sql.Time">
-    </field>
+<!--    <field name="seatId" class="java.lang.String">-->
+<!--    </field>-->
+<!--    <field name="startTime" class="java.sql.Time">-->
+<!--    </field>-->
     <background>
         <band splitType="Stretch"/>
     </background>
@@ -136,25 +136,25 @@ waktu bioskop setempat]]></text>
                 <textElement verticalAlignment="Top">
                     <font fontName="Trebuchet MS" size="13" isBold="true"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{customerName}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{userCredential}]]></textFieldExpression>
             </textField>
-            <textField>
-                <reportElement x="10" y="60" width="140" height="30" uuid="761380d5-5acd-4e3b-b5f1-a045276e0cd8">
-                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
-                </reportElement>
-                <box topPadding="3"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Trebuchet MS" size="10"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{date}.toLocaleString()]]></textFieldExpression>
-            </textField>
+<!--            <textField>-->
+<!--                <reportElement x="10" y="60" width="140" height="30" uuid="761380d5-5acd-4e3b-b5f1-a045276e0cd8">-->
+<!--                    <property name="com.jaspersoft.studio.unit.height" value="px"/>-->
+<!--                </reportElement>-->
+<!--                <box topPadding="3"/>-->
+<!--                <textElement verticalAlignment="Middle">-->
+<!--                    <font fontName="Trebuchet MS" size="10"/>-->
+<!--                </textElement>-->
+<!--                <textFieldExpression><![CDATA[$F{date}.toLocaleString()]]></textFieldExpression>-->
+<!--            </textField>-->
             <textField>
                 <reportElement x="156" y="140" width="100" height="30" uuid="6eccdf4c-12f0-48dd-843d-86ae9e9ffb7c"/>
                 <textFieldExpression><![CDATA[String.valueOf($F{startTime}.toLocalTime())]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="300" y="140" width="100" height="30" uuid="2e3caeb6-b689-4f1d-b601-86e6fc61bfe4"/>
-                <textFieldExpression><![CDATA[$F{endTime}.toLocalTime()]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{startTime}.toLocalTime()]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="256" y="60" width="287" height="30" uuid="0bfc597d-93c8-4a99-a4d4-1cb8207726f1"/>

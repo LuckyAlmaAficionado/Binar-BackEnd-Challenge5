@@ -4,11 +4,9 @@ import com.binar.challenge5.challenge5.Status;
 import com.binar.challenge5.challenge5.model.Booking;
 import com.binar.challenge5.challenge5.model.Movie;
 import com.binar.challenge5.challenge5.model.Schedule;
-import com.binar.challenge5.challenge5.model.Seat;
 import com.binar.challenge5.challenge5.repository.BookingRepository;
 import com.binar.challenge5.challenge5.repository.MovieRepository;
 import com.binar.challenge5.challenge5.repository.ScheduleRepository;
-import com.binar.challenge5.challenge5.repository.SeatRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +21,7 @@ public class Config {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     @Bean
-    CommandLineRunner commandLineRunner(MovieRepository movieRepository, ScheduleRepository scheduleRepository, BookingRepository bookingRepository, SeatRepository seatRepository) {
+    CommandLineRunner commandLineRunner(MovieRepository movieRepository, ScheduleRepository scheduleRepository, BookingRepository bookingRepository) {
         return args -> {
             Movie avatar = new Movie(
                     "avatar the legends of aang",
@@ -103,28 +101,6 @@ public class Config {
                     List.of("A1", "A2").toArray(new String[0]),
                     Status.ON_PROCESS_PAYMENT
             );
-
-            Seat a1 = new Seat(
-                    1L,
-                    "A1"
-            );
-
-            Seat a2 = new Seat(
-                    1L,
-                    "A2"
-            );
-
-            Seat a3 = new Seat(
-                    1L,
-                    "A3"
-            );
-
-            Seat a4 = new Seat(
-                    1L,
-                    "A4"
-            );
-
-
             movieRepository.saveAll(
                     List.of(avatar, lion, joker, jumanji)
             );
@@ -134,11 +110,6 @@ public class Config {
             );
             scheduleRepository.saveAll(
                     List.of(schedule1)
-            );
-
-
-            seatRepository.saveAll(
-                    List.of(a1, a2, a3, a4)
             );
 
         };

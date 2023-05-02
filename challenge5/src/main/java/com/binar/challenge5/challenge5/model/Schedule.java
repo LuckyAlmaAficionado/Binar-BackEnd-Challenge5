@@ -40,12 +40,9 @@ public class Schedule {
         return temp;
     }
 
-
-
     //    @OneToMany(cascade = CascadeType.ALL, targetEntity = Seat.class, orphanRemoval = true)
     //    @JoinColumn(name = "scheduleFk", referencedColumnName = "scheduleId")
     //    private List<Seat> seats;
-
 
     public Schedule(Time startTime, Time endTime, String studio, Integer price, Long movieFk) {
         this.startTime = startTime;
