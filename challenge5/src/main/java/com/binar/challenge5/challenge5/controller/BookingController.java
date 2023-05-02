@@ -2,9 +2,11 @@ package com.binar.challenge5.challenge5.controller;
 
 import com.binar.challenge5.challenge5.model.Booking;
 import com.binar.challenge5.challenge5.service.BookingService;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 @RestController
@@ -23,7 +25,7 @@ public class BookingController {
     public Booking postBooking(@RequestParam String email,
                                @RequestParam Long movieId,
                                @RequestParam Long scheduleId,
-                               @RequestParam String[] seat) {
+                               @RequestParam String[] seat) throws JRException, FileNotFoundException {
         return service.postBooking(email, movieId, scheduleId, seat);
     }
 
@@ -38,9 +40,9 @@ public class BookingController {
 //        return service.findByBookingCodeWhere(bookingCode);
 //    }
 //
-//    @PostMapping(path = "{bookingCode}")
-//    public String printJasperReport(@PathVariable String bookingCode) throws JRException, FileNotFoundException {
-//        return service.printReport(bookingCode);
-//    }
+    @PostMapping(path = "{bookingCode}")
+    public String printJasperReport(@PathVariable String bookingCode) throws JRException, FileNotFoundException {
+        return service.printReport(bookingCode);
+    }
 
 }

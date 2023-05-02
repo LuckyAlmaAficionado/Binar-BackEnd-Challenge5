@@ -8,11 +8,15 @@ import com.binar.challenge5.challenge5.repository.BookingRepository;
 import com.binar.challenge5.challenge5.repository.MovieRepository;
 import com.binar.challenge5.challenge5.repository.ScheduleRepository;
 import com.binar.challenge5.challenge5.repository.UserRepository;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 
-import java.util.List;
-import java.util.Random;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
 
 @Service
 public class BookingService {
@@ -43,7 +47,7 @@ public class BookingService {
         return salt.toString();
     }
 
-    public Booking postBooking(String email, Long movieId, Long scheduleId, String[] seat) {
+    public Booking postBooking(String email, Long movieId, Long scheduleId, String[] seat) throws JRException, FileNotFoundException {
 
         User user = userRepository.findUserByEmail(email).orElseThrow(() -> new IllegalArgumentException("email does not exists"));
         if (!movieRepository.findById(movieId).isPresent()) throw new NullPointerException("movie id" + movieId + " does not have a schedule");
@@ -59,12 +63,19 @@ public class BookingService {
 //        booking.setStartTime(byScheduleId.getStartTime());
 //        booking.setSeat(seat);
 //        booking.setStatus(Status.ON_PROCESS_PAYMENT);
+        String bookingCode = getRand().toUpperCase();
 
-        Booking booking = new Booking(getRand().toUpperCase(), movieId, scheduleId, user.getUserCredential(), byScheduleId.getStudio(),
+        Booking booking = new Booking(bookingCode, movieId, scheduleId, user.getUserCredential(), byScheduleId.getStudio(),
                 movieRepository.findById(movieId).get().getMovieName(), byScheduleId.getStartTime(),
                 seat, (byScheduleId.getPrice() * seat.length), Status.ON_PROCESS_PAYMENT);
+        System.out.println("lmao" + bookingCode);
+        System.out.println("lmao" + bookingCode);
 
-        return repository.save(booking);
+        repository.save(booking);
+
+        printReport(bookingCode);
+
+        return booking;
     }
 
     public Booking updateStatusBooking(Long bookingId, Integer status) {
@@ -75,25 +86,28 @@ public class BookingService {
     }
 
 
-//    public Collection<Booking> findByBookingCodeWhere(String bookingCode) {
-//        Collection<Booking> bookingByBookingCode = repository.findBookingByBookingCode(bookingCode);
-//        if (bookingByBookingCode.isEmpty()) throw new IllegalArgumentException("booking code " + bookingCode + " does not exists");
-//        return repository.findBookingByBookingCode(bookingCode);
-//    }
-//
-//
-//    public String printReport(String bookingCode) throws FileNotFoundException, JRException {
-//        String path = "D:\\code\\.springboot\\challenge 5\\jasper";
-//
-//        Collection<Booking> bookingCollection = repository.findBookingByBookingCode(bookingCode);
-//
-//        File file = ResourceUtils.getFile("classpath:jasper-report.jrxml");
-//        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-//        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookingCollection);
-//        Map<String, Object> parameters = new HashMap<>();
-//        parameters.put("createdBy", "Lucky Alma");
-//        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
-//        JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\booking.pdf");
-//        return "report generate in path: " + path;
-//    }
+    public Collection<Booking> findByBookingCodeWhere(String bookingCode) {
+        Collection<Booking> bookingByBookingCode = repository.findBookingByBookingCode(bookingCode);
+        if (bookingByBookingCode.isEmpty()) throw new IllegalArgumentException("booking code " + bookingCode + " does not exists");
+        return repository.findBookingByBookingCode(bookingCode);
+    }
+
+
+    public String printReport(String bookingCode) throws FileNotFoundException, JRException {
+        String path = "D:\\code\\.springboot\\challenge 5\\jasper";
+
+        System.out.println("masuk nih");
+
+        Collection<Booking> bookingCollection = repository.findBookingByBookingCode(bookingCode);
+
+
+        File file = ResourceUtils.getFile("classpath:jasper-report.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookingCollection);
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("createdBy", "Lucky Alma");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+        JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\" + bookingCode + ".pdf");
+        return "report generate in path: " + path;
+    }
 }

@@ -3,10 +3,7 @@ package com.binar.challenge5.challenge5.repository;
 import com.binar.challenge5.challenge5.model.Movie;
 import com.binar.challenge5.challenge5.model.Schedule;
 import org.checkerframework.checker.units.qual.A;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
@@ -99,22 +96,25 @@ class ScheduleRepositoryTest {
 
     @Test
     void deleteByMovieFk() throws ParseException {
-        
+
        underTest.deleteByMovieFk(3L);
 
        Assertions.assertNull(underTest.findByMovieFk(3L));
-
 
     }
 
     @Test
     void findByMovieFk() {
 
-
+        Assertions.assertNotNull(underTest.findByMovieFk(2L));
 
     }
 
     @Test
+    @Disabled
     void findByScheduleId() {
+
+
+
     }
 }

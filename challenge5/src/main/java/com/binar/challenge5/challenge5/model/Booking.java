@@ -34,7 +34,7 @@ public class Booking {
             generator = "booking_sequence"
     )
     private Long bookingId;
-    private String kodeBooking;
+    private String bookingCode;
     private Long movieId;
     private Long scheduleId;
     private String userCredential;
@@ -56,8 +56,8 @@ public class Booking {
         this.status = status;
     }
 
-    public Booking(String kodeBooking, Long movieId, Long scheduleId, String userCredential, String studio, String movieName, Time startTime, Integer price, Status status, LocalDateTime lastUpdate) {
-        this.kodeBooking = kodeBooking;
+    public Booking(String bookingCode, Long movieId, Long scheduleId, String userCredential, String studio, String movieName, Time startTime, Integer price, Status status, LocalDateTime lastUpdate) {
+        this.bookingCode = bookingCode;
         this.movieId = movieId;
         this.scheduleId = scheduleId;
         this.userCredential = userCredential;
@@ -69,8 +69,8 @@ public class Booking {
         this.lastUpdate = lastUpdate;
     }
 
-    public Booking(String kodeBooking, Long movieId, Long scheduleId, String userCredential, String studio, String movieName, Time startTime, String[] seat, Integer price, Status status) {
-        this.kodeBooking = kodeBooking;
+    public Booking(String bookingCode, Long movieId, Long scheduleId, String userCredential, String studio, String movieName, Time startTime, String[] seat, Integer price, Status status) {
+        this.bookingCode = bookingCode;
         this.movieId = movieId;
         this.scheduleId = scheduleId;
         this.userCredential = userCredential;
