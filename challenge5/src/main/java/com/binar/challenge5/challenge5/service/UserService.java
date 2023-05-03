@@ -33,6 +33,7 @@ public class UserService {
         return salt.toString();
     }
 
+    // testing
     public String addUser(String username, String email, String password) {
         Optional<User> userByEmail = repository.findUserByEmail(email);
         if (userByEmail.isPresent()) throw new IllegalArgumentException("user with email " + email + " already exists");

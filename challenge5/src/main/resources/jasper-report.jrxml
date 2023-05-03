@@ -127,7 +127,7 @@ waktu bioskop setempat]]></text>
                 <textElement>
                     <font fontName="Tw Cen MT" size="8"/>
                 </textElement>
-                <text><![CDATA[DATE		:]]></text>
+                <text><![CDATA[DATE:]]></text>
             </staticText>
             <line>
                 <reportElement x="340" y="60" width="1" height="140" uuid="c01d5484-e59f-49b2-a771-8142d5451457"/>
@@ -137,7 +137,7 @@ waktu bioskop setempat]]></text>
                 <textElement verticalAlignment="Middle">
                     <font fontName="Tw Cen MT" size="10"/>
                 </textElement>
-                <text><![CDATA[SEAT:]]></text>
+                <text><![CDATA[SEAT         :]]></text>
             </staticText>
             <staticText>
                 <reportElement x="10" y="100" width="330" height="15" uuid="fa04047e-65c7-4a80-9b21-9538e03f9cf9">
@@ -147,35 +147,35 @@ waktu bioskop setempat]]></text>
                 <textElement verticalAlignment="Middle">
                     <font fontName="Tw Cen MT" size="8"/>
                 </textElement>
-                <text><![CDATA[NAME		:]]></text>
+                <text><![CDATA[NAME                    :]]></text>
             </staticText>
             <staticText>
                 <reportElement x="10" y="120" width="330" height="15" uuid="b2857b9e-5582-464e-9a9a-e76bb1a2420a"/>
                 <textElement verticalAlignment="Middle">
                     <font fontName="Tw Cen MT" size="8"/>
                 </textElement>
-                <text><![CDATA[START TIME	:]]></text>
+                <text><![CDATA[START TIME          :]]></text>
             </staticText>
             <staticText>
                 <reportElement x="10" y="140" width="330" height="15" uuid="175d1f90-deda-43b7-a88c-1a2e4096f679"/>
                 <textElement verticalAlignment="Middle">
                     <font fontName="Tw Cen MT" size="8"/>
                 </textElement>
-                <text><![CDATA[END TIME		:]]></text>
+                <text><![CDATA[END TIME             :]]></text>
             </staticText>
             <staticText>
                 <reportElement x="10" y="160" width="330" height="15" uuid="22265d8d-9cf3-4bcf-a04b-897c7e99e8e9"/>
                 <textElement verticalAlignment="Middle">
                     <font fontName="Tw Cen MT" size="8"/>
                 </textElement>
-                <text><![CDATA[SEAT		:]]></text>
+                <text><![CDATA[SEAT                     :]]></text>
             </staticText>
             <staticText>
                 <reportElement x="10" y="180" width="330" height="15" uuid="503d3d0e-ac29-4b6c-a10f-2137323d1e19"/>
                 <textElement verticalAlignment="Middle">
                     <font fontName="Tw Cen MT" size="8"/>
                 </textElement>
-                <text><![CDATA[PRICE		:]]></text>
+                <text><![CDATA[PRICE                    :]]></text>
             </staticText>
             <textField>
                 <reportElement x="100" y="100" width="240" height="15" uuid="d248a252-e1a7-4efc-8eb0-119558cfb791"/>
