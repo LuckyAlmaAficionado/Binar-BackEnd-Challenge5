@@ -96,18 +96,15 @@ public class Config {
 //                    450000
 //            );
 
-            Booking booking = new Booking(
-                    1L,
-                    List.of("A1", "A2").toArray(new String[0]),
-                    Status.ON_PROCESS_PAYMENT
-            );
+//            Booking booking = new Booking(
+//                    1L,
+//                    List.of("A1", "A2").toArray(new String[0]),
+//                    Status.ON_PROCESS_PAYMENT
+//            );
             movieRepository.saveAll(
                     List.of(avatar, lion, joker, jumanji)
             );
 
-            bookingRepository.saveAll(
-                    List.of(booking)
-            );
             scheduleRepository.saveAll(
                     List.of(schedule1)
             );
