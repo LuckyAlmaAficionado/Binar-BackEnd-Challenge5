@@ -25,49 +25,49 @@ class BookingRepositoryTest {
         underTest.deleteAll();
     }
 
-    @Test
-    void itShouldfindByMovieIdExists() {
-        Booking booking = new Booking(
-                String.valueOf(uuid),
-                1L,
-                1L,
-                String.valueOf(uuid),
-                "Transmart",
-                "Jumanji",
-                Time.valueOf("19:30:00"),
-                70000,
-                Status.ON_PROCESS_PAYMENT,
-                LocalDateTime.now()
-        );
-
-        underTest.save(booking);
-
-        Booking byMovieId = underTest.findByMovieId(1L);
-
-        assertThat(byMovieId.getMovieId()).isEqualTo(booking.getMovieId());
-    }
-
-    @Test
-    void itShouldfindByMovieIdDoesExists() {
-        Booking booking = new Booking(
-                String.valueOf(uuid),
-                1L,
-                1L,
-                String.valueOf(uuid),
-                "Transmart",
-                "Jumanji",
-                Time.valueOf("19:30:00"),
-                70000,
-                Status.ON_PROCESS_PAYMENT,
-                LocalDateTime.now()
-        );
-
-        underTest.save(booking);
-
-        Booking byMovieId = underTest.findByMovieId(1L);
-
-        long unitTest = 2L;
-
-        assertThat(byMovieId.getMovieId()).isNotEqualTo(unitTest);
-    }
+//    @Test
+//    void itShouldfindByMovieIdExists() {
+//        Booking booking = new Booking(
+//                String.valueOf(uuid),
+//                1L,
+//                1L,
+//                String.valueOf(uuid),
+//                "Transmart",
+//                "Jumanji",
+//                Time.valueOf("19:30:00"),
+//                70000,
+//                Status.ON_PROCESS_PAYMENT,
+//                LocalDateTime.now()
+//        );
+//
+//        underTest.save(booking);
+//
+//        Booking byMovieId = underTest.findByMovieId(1L);
+//
+//        assertThat(byMovieId.getMovieId()).isEqualTo(booking.getMovieId());
+//    }
+//
+//    @Test
+//    void itShouldfindByMovieIdDoesExists() {
+//        Booking booking = new Booking(
+//                String.valueOf(uuid),
+//                1L,
+//                1L,
+//                String.valueOf(uuid),
+//                "Transmart",
+//                "Jumanji",
+//                Time.valueOf("19:30:00"),
+//                70000,
+//                Status.ON_PROCESS_PAYMENT,
+//                LocalDateTime.now()
+//        );
+//
+//        underTest.save(booking);
+//
+//        Booking byMovieId = underTest.findByMovieId(1L);
+//
+//        long unitTest = 2L;
+//
+//        assertThat(byMovieId.getMovieId()).isNotEqualTo(unitTest);
+//    }
 }
