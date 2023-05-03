@@ -18,14 +18,14 @@ public class BookingController {
 
     @GetMapping
     public List<Booking> getAllBookingCode() {
-        return service.getAllBooking();
+        return service.getAllBookings();
     }
 
     @PostMapping
     public Booking postBooking(@RequestParam String email,
                                @RequestParam Long movieId,
                                @RequestParam Long scheduleId,
-                               @RequestParam String[] seat) throws JRException, FileNotFoundException {
+                               @RequestParam String seat) throws JRException, FileNotFoundException {
         return service.postBooking(email, movieId, scheduleId, seat);
     }
 

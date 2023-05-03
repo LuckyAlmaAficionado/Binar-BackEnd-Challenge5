@@ -1,9 +1,7 @@
 package com.binar.challenge5.challenge5.service;
 
 import com.binar.challenge5.challenge5.Status;
-import com.binar.challenge5.challenge5.model.Booking;
-import com.binar.challenge5.challenge5.model.Schedule;
-import com.binar.challenge5.challenge5.model.User;
+import com.binar.challenge5.challenge5.model.*;
 import com.binar.challenge5.challenge5.repository.BookingRepository;
 import com.binar.challenge5.challenge5.repository.MovieRepository;
 import com.binar.challenge5.challenge5.repository.ScheduleRepository;
@@ -16,12 +14,14 @@ import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.*;
 
 @Service
 public class BookingService {
 
-    Booking booking;
     @Autowired
     private BookingRepository repository;
     @Autowired
@@ -31,11 +31,10 @@ public class BookingService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<Booking> getAllBooking() {
+    public List<Booking> getAllBookings() {
         return repository.findAll();
     }
-
-    private static String getRand() {
+    private String getRand() {
         String saltChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
         Random rand =  new Random();
@@ -47,29 +46,20 @@ public class BookingService {
         return salt.toString();
     }
 
-    public Booking postBooking(String email, Long movieId, Long scheduleId, String[] seat) throws JRException, FileNotFoundException {
+    public Booking postBooking(String email, Long movieId, Long scheduleId, String seat) throws JRException, FileNotFoundException {
 
         User user = userRepository.findUserByEmail(email).orElseThrow(() -> new IllegalArgumentException("email does not exists"));
-        if (!movieRepository.findById(movieId).isPresent()) throw new NullPointerException("movie id" + movieId + " does not have a schedule");
 
+        Movie movieDoesNotExists = movieRepository.findById(movieId).orElseThrow(() -> new IllegalArgumentException("movie does not exists"));
 
-        Schedule byScheduleId = scheduleRepository.findByScheduleId(scheduleId);
+        Schedule scheduleTemp = scheduleRepository.findByScheduleId(scheduleId);
 
-//        booking.setMovieId(movieId);
-//        booking.setUserCredential(user.getUserCredential());
-//        booking.setScheduleId(scheduleId);
-//        booking.setStudio(byScheduleId.getStudio());
-//        booking.setMovieName(movieRepository.findById(movieId).get().getMovieName());
-//        booking.setStartTime(byScheduleId.getStartTime());
-//        booking.setSeat(seat);
-//        booking.setStatus(Status.ON_PROCESS_PAYMENT);
         String bookingCode = getRand().toUpperCase();
 
-        Booking booking = new Booking(bookingCode, movieId, scheduleId, user.getUserCredential(), byScheduleId.getStudio(),
-                movieRepository.findById(movieId).get().getMovieName(), byScheduleId.getStartTime(),
-                seat, (byScheduleId.getPrice() * seat.length), Status.ON_PROCESS_PAYMENT);
-        System.out.println("lmao" + bookingCode);
-        System.out.println("lmao" + bookingCode);
+        Booking booking = new Booking(bookingCode, movieId, movieDoesNotExists.getMovieName(), scheduleId, user.getUsername(), scheduleTemp.getStudio(), scheduleTemp.getStartTime(), scheduleTemp.getEndTime(),
+                String.valueOf(scheduleTemp.getDate()), seat, scheduleTemp.getPrice(), Status.ON_PROCESS_PAYMENT);
+
+        System.out.println(booking);
 
         repository.save(booking);
 
@@ -87,19 +77,16 @@ public class BookingService {
 
 
     public Collection<Booking> findByBookingCodeWhere(String bookingCode) {
-        Collection<Booking> bookingByBookingCode = repository.findBookingByBookingCode(bookingCode);
+        Collection<Booking> bookingByBookingCode = repository.findBookingByCodeBooking(bookingCode);
         if (bookingByBookingCode.isEmpty()) throw new IllegalArgumentException("booking code " + bookingCode + " does not exists");
-        return repository.findBookingByBookingCode(bookingCode);
+        return repository.findBookingByCodeBooking(bookingCode);
     }
 
 
     public String printReport(String bookingCode) throws FileNotFoundException, JRException {
         String path = "D:\\code\\.springboot\\challenge 5\\jasper";
 
-        System.out.println("masuk nih");
-
-        Collection<Booking> bookingCollection = repository.findBookingByBookingCode(bookingCode);
-
+        Collection<Booking> bookingCollection = repository.findBookingByCodeBooking(bookingCode);
 
         File file = ResourceUtils.getFile("classpath:jasper-report.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());

@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Long> {
 
-    Collection<Booking> findBookingByBookingCode(String bookingCode);
+    Collection<Booking> findBookingByCodeBooking(String bookingCode);
 
     Booking findByMovieId(Long movieId);
 
