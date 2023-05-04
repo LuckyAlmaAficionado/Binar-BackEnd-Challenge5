@@ -69,7 +69,6 @@ public class ScheduleController {
             msg.setMessage(e.getMessage());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(msg);
         }
-
     }
 
 }
