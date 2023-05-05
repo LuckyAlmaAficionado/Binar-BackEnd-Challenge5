@@ -1,7 +1,10 @@
 package com.binar.challenge5.challenge5.service;
 
 import com.binar.challenge5.challenge5.Status;
-import com.binar.challenge5.challenge5.model.*;
+import com.binar.challenge5.challenge5.model.Booking;
+import com.binar.challenge5.challenge5.model.Movie;
+import com.binar.challenge5.challenge5.model.Schedule;
+import com.binar.challenge5.challenge5.model.User;
 import com.binar.challenge5.challenge5.repository.BookingRepository;
 import com.binar.challenge5.challenge5.repository.MovieRepository;
 import com.binar.challenge5.challenge5.repository.ScheduleRepository;
@@ -14,9 +17,6 @@ import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
 import java.util.*;
 
 @Service
@@ -31,13 +31,17 @@ public class BookingService {
     @Autowired
     private UserRepository userRepository;
 
+    public BookingService(BookingRepository repository) {
+    }
+
     public List<Booking> getAllBookings() {
         return repository.findAll();
     }
+
     private String getRand() {
         String saltChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
-        Random rand =  new Random();
+        Random rand = new Random();
         while (salt.length() < 6) {
             int index = (int) (rand.nextFloat() * saltChar.length());
             salt.append(saltChar.charAt(index));
@@ -46,7 +50,8 @@ public class BookingService {
         return salt.toString();
     }
 
-    public Booking postBooking(String email, Long movieId, Long scheduleId, String seat) throws JRException, FileNotFoundException {
+    public Booking postBooking(String email, Long movieId, Long scheduleId, String[] seats) throws JRException, FileNotFoundException {
+
 
         User user = userRepository.findUserByEmail(email).orElseThrow(() -> new IllegalArgumentException("email does not exists"));
 
@@ -56,14 +61,33 @@ public class BookingService {
 
         String bookingCode = getRand().toUpperCase();
 
-        Booking booking = new Booking(bookingCode, movieId, movieDoesNotExists.getMovieName(), scheduleId, user.getUsername(), scheduleTemp.getStudio(), scheduleTemp.getStartTime(), scheduleTemp.getEndTime(),
-                String.valueOf(scheduleTemp.getDate()), seat, scheduleTemp.getPrice(), Status.ON_PROCESS_PAYMENT);
+        Booking booking = null;
 
-        System.out.println(booking);
+        if (seats.length > 1) {
+            for (String seat : seats) {
 
-        repository.save(booking);
+                Collection<Booking> andSeat = repository.findBookingByMovieIdAndScheduleIdAndSeat(movieId, scheduleId, seat);
 
-        printReport(bookingCode);
+                if (!andSeat.isEmpty()) throw new IllegalArgumentException("seat " + seat + " reserved");
+
+                booking = new Booking(bookingCode, movieId, movieDoesNotExists.getMovieName(), scheduleId, user.getUsername(),
+                        scheduleTemp.getStudio(), scheduleTemp.getStartTime(), scheduleTemp.getEndTime(), String.valueOf(scheduleTemp.getDate()),
+                        seat, scheduleTemp.getPrice(), Status.ON_PROCESS_PAYMENT);
+                repository.save(booking);
+            }
+        } else {
+
+            Collection<Booking> andSeat = repository.findBookingByMovieIdAndScheduleIdAndSeat(movieId, scheduleId, seats[0]);
+
+            if (!andSeat.isEmpty()) throw new IllegalArgumentException("seat " + seats[0] + " reserved");
+
+             booking = new Booking(bookingCode, movieId, movieDoesNotExists.getMovieName(), scheduleId, user.getUsername(),
+                    scheduleTemp.getStudio(), scheduleTemp.getStartTime(), scheduleTemp.getEndTime(), String.valueOf(scheduleTemp.getDate()),
+                    seats[0], scheduleTemp.getPrice(), Status.ON_PROCESS_PAYMENT);
+            repository.save(booking);
+        }
+
+//        printReport(bookingCode);
 
         return booking;
     }
@@ -78,13 +102,14 @@ public class BookingService {
 
     public Collection<Booking> findByBookingCodeWhere(String bookingCode) {
         Collection<Booking> bookingByBookingCode = repository.findBookingByCodeBooking(bookingCode);
-        if (bookingByBookingCode.isEmpty()) throw new IllegalArgumentException("booking code " + bookingCode + " does not exists");
+        if (bookingByBookingCode.isEmpty())
+            throw new IllegalArgumentException("booking code " + bookingCode + " does not exists");
         return repository.findBookingByCodeBooking(bookingCode);
     }
 
 
     public String printReport(String bookingCode) throws FileNotFoundException, JRException {
-        String path = "D:\\code\\.springboot\\challenge 5\\jasper";
+        String path = "D:\\code\\.springboot\\challenge 5 - Backup\\jasper";
 
         Collection<Booking> bookingCollection = repository.findBookingByCodeBooking(bookingCode);
 
@@ -97,4 +122,5 @@ public class BookingService {
         JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\" + bookingCode + ".pdf");
         return "report generate in path: " + path;
     }
+
 }

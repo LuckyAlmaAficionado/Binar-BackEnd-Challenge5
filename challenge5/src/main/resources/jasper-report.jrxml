@@ -1,286 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.1.final using JasperReports Library version 6.20.1-7584acb244139816654f64e2fd57a00d3e31921e  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="26cfac1d-008e-4039-ac48-123e3e2b7086">
-    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_3" pageWidth="254" pageHeight="325" columnWidth="214" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d7bd3dde-d533-4ff6-ae63-40f9abdc9d2d">
     <queryString language="SQL">
         <![CDATA[select * from booking]]>
     </queryString>
     <field name="codeBooking" class="java.lang.String"/>
     <field name="date" class="java.lang.String"/>
     <field name="endTime" class="java.sql.Time"/>
-    <field name="lastUpdate" class="java.sql.Timestamp"/>
-    <field name="movieId" class="java.lang.Long"/>
     <field name="movieName" class="java.lang.String"/>
     <field name="price" class="java.lang.Integer"/>
-    <field name="scheduleId" class="java.lang.Long"/>
     <field name="seat" class="java.lang.String"/>
     <field name="startTime" class="java.sql.Time"/>
-    <field name="status" class="java.lang.Integer"/>
     <field name="studio" class="java.lang.String"/>
     <field name="username" class="java.lang.String"/>
-
     <background>
         <band splitType="Stretch"/>
     </background>
     <title>
-        <band height="82" splitType="Stretch">
-            <staticText>
-                <reportElement x="0" y="48" width="130" height="20" forecolor="#761A79" uuid="26a18de8-80fb-4981-944c-13cd20649bc3"/>
-                <textElement textAlignment="Left">
-                    <font fontName="Trebuchet MS" size="12" isBold="true"/>
-                </textElement>
-                <text><![CDATA[E-ticket bioskop]]></text>
-            </staticText>
-            <image>
-                <reportElement x="-30" y="-10" width="249" height="67" uuid="bf641090-8ec7-4f94-93a5-d2e1d7493faa"/>
+        <band height="40" splitType="Stretch">
+            <line>
+                <reportElement x="1" y="39" width="208" height="1" uuid="47a28e49-c35e-44eb-90c3-b30513e1d5e3"/>
+            </line>
+            <image scaleImage="RealHeight" hAlign="Center" vAlign="Middle">
+                <reportElement x="0" y="2" width="209" height="37" uuid="13d95ad0-c303-442f-b0a6-b5dd73ed9bdb"/>
                 <box leftPadding="0"/>
                 <imageExpression><![CDATA["D:/code/.springboot/challenge 5/picture/image-removebg-preview.png"]]></imageExpression>
             </image>
-            <line>
-                <reportElement x="-20" y="76" width="595" height="1" uuid="4fe33d8a-edf3-4cb3-845b-3a7145e2160a"/>
-            </line>
-            <image>
-                <reportElement x="360" y="0" width="208" height="67" uuid="36fefd35-a0e3-42db-92b0-34b24d8f0c8a">
-                    <property name="com.jaspersoft.studio.unit.y" value="px"/>
-                </reportElement>
-                <imageExpression><![CDATA["D:/code/.springboot/challenge 5/picture/booking code.png"]]></imageExpression>
-            </image>
-            <staticText>
-                <reportElement x="420" y="0" width="100" height="20" uuid="9c4d230d-601c-40e7-9ee0-00355539c686">
-                    <property name="com.jaspersoft.studio.unit.y" value="px"/>
-                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
-                </reportElement>
-                <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font fontName="Trebuchet MS" isBold="false"/>
-                </textElement>
-                <text><![CDATA[Kode Booking Anda]]></text>
-            </staticText>
-            <textField>
-                <reportElement x="440" y="20" width="80" height="22" forecolor="#FFFFFF" uuid="55553dae-97f3-4715-94c7-1b6e620ddda8">
-                    <property name="com.jaspersoft.studio.unit.y" value="px"/>
-                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
-                </reportElement>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="SansSerif" size="16" isBold="true"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{codeBooking}]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement x="150" y="43" width="229" height="30" uuid="923a53a1-40bc-44d4-99aa-d1691912c035"/>
-                <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="13" isBold="true"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{studio}]]></textFieldExpression>
-            </textField>
         </band>
     </title>
     <detail>
-        <band height="225" splitType="Stretch">
-            <image>
-                <reportElement x="400" y="10" width="30" height="25" uuid="6f6453a5-0203-4cda-b89a-865f583167f8"/>
-                <imageExpression><![CDATA["D:/code/.springboot/challenge 5/picture/icons8-box-important-100.png"]]></imageExpression>
-            </image>
-            <staticText>
-                <reportElement x="430" y="10" width="108" height="30" forecolor="#761A79" uuid="9edb292f-1809-465f-9aec-8e962685380e"/>
-                <textElement textAlignment="Left">
-                    <font fontName="SansSerif" size="9"/>
-                    <paragraph lineSpacing="Single" lineSpacingSize="2.0"/>
-                </textElement>
-                <text><![CDATA[waktu tertera adalah
-waktu bioskop setempat]]></text>
-            </staticText>
-            <image>
-                <reportElement x="200" y="10" width="30" height="25" uuid="6c47134c-a540-4b6d-9ba1-73300b35411e"/>
-                <imageExpression><![CDATA["D:/code/.springboot/challenge 5/picture/icons8-box-important-100.png"]]></imageExpression>
-            </image>
-            <staticText>
-                <reportElement x="230" y="10" width="140" height="30" forecolor="#761A79" uuid="8dbbf139-6874-47fb-b167-ba856b2ab308"/>
-                <textElement textAlignment="Left">
-                    <font fontName="SansSerif" size="9"/>
-                    <paragraph lineSpacing="Single" lineSpacingSize="2.0"/>
-                </textElement>
-                <text><![CDATA[penukaran code paling lambat
-10 menit sebelum film diputar]]></text>
-            </staticText>
-            <image>
-                <reportElement x="0" y="10" width="30" height="25" uuid="90bba375-7129-4360-bf41-11c7b4432287"/>
-                <imageExpression><![CDATA["D:/code/.springboot/challenge 5/picture/icons8-ticket-100.png"]]></imageExpression>
-            </image>
-            <staticText>
-                <reportElement x="30" y="10" width="140" height="30" forecolor="#761A79" uuid="ce03d05b-0d3a-4c4a-8ce4-0f5d14e8102f"/>
-                <textElement textAlignment="Left">
-                    <font fontName="SansSerif" size="9"/>
-                    <paragraph lineSpacing="Single" lineSpacingSize="2.0"/>
-                </textElement>
-                <text><![CDATA[penukaran code paling lambat
-10 menit sebelum film diputar]]></text>
-            </staticText>
+        <band height="214" splitType="Stretch">
             <rectangle radius="2">
-                <reportElement x="2" y="60" width="550" height="140" uuid="52799351-f38d-4982-8a03-9f17903c2d1c"/>
+                <reportElement x="1" y="0" width="208" height="120" uuid="99287197-f7ae-46d5-9150-105684d955f2"/>
             </rectangle>
+            <textField>
+                <reportElement x="0" y="0" width="209" height="30" uuid="21ec6a26-8b65-4f9a-b1d1-3faef6324215"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Trebuchet MS" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{movieName}.toUpperCase()]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="80" y="60" width="50" height="10" uuid="f51221f8-c752-4477-97f7-5497d46e32f8"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="6"/>
+                </textElement>
+                <text><![CDATA[Tanggal	:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="80" y="70" width="50" height="10" uuid="2e224cd4-ed3b-4886-b918-5c93b7353921"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="6"/>
+                </textElement>
+                <text><![CDATA[Bioskop	:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="80" y="80" width="50" height="10" uuid="1fef2e96-44c5-4761-9cde-bd54ca3261cf"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="6"/>
+                </textElement>
+                <text><![CDATA[Jam	:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="80" y="90" width="50" height="10" uuid="3fce96cf-cff0-449b-86e6-0d3bcb5945fe"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="6"/>
+                </textElement>
+                <text><![CDATA[Seat	:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="130" y="60" width="100" height="10" uuid="92fe4446-f3ee-48a3-8dc7-b4b4a4bfa517"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Trebuchet MS" size="6"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="130" y="70" width="100" height="10" uuid="f83936d3-8efa-4106-b021-5ae5fb504c56"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Trebuchet MS" size="6"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{studio}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="130" y="80" width="100" height="10" uuid="8b33866b-e1a8-419c-8a37-2a3b954e20f7"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Trebuchet MS" size="6"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{startTime}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="130" y="90" width="100" height="10" uuid="3a43ff3c-866c-4c96-bbce-9914cee73baa"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Trebuchet MS" size="6"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{seat}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="80" y="50" width="50" height="10" uuid="a69a70f3-046b-432d-8d4d-388008f159fa"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="6"/>
+                </textElement>
+                <text><![CDATA[Pemesan	:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="130" y="50" width="100" height="10" uuid="692d5911-5b9c-4146-9ba4-ad8deb4e4b51"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Trebuchet MS" size="6"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
+            </textField>
+            <image scaleImage="FillFrame">
+                <reportElement x="20" y="31" width="50" height="79" uuid="2b2287af-00d2-45bf-aee2-89b6cb1c2dfc"/>
+                <graphicElement fill="Solid"/>
+                <imageExpression><![CDATA["D:/code/.springboot/challenge 5 - Backup/jasper drawable/avatar.jpeg"]]></imageExpression>
+            </image>
+            <textField>
+                <reportElement x="130" y="40" width="100" height="10" uuid="f27272c2-77ab-4b64-a72e-8982c990b3f8"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Trebuchet MS" size="6"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{codeBooking}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="80" y="40" width="50" height="10" uuid="601f39ea-bd68-4c80-9ede-6a765216271f"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="6"/>
+                </textElement>
+                <text><![CDATA[Kode	:	]]></text>
+            </staticText>
             <line>
-                <reportElement x="2" y="90" width="549" height="1" uuid="dd9d9942-d421-4846-83c9-088f3d94c8fc"/>
+                <reportElement x="1" y="140" width="209" height="1" uuid="0ed8ca09-b568-4c13-9815-032d1ba0ea23"/>
             </line>
             <staticText>
-                <reportElement x="10" y="70" width="331" height="30" uuid="111f9347-9eb3-4f9e-a036-0f3b233d4d82"/>
+                <reportElement x="0" y="150" width="109" height="20" forecolor="#030303" uuid="db336ed4-4323-427e-9ad8-0e8e13c6c97a"/>
                 <textElement>
-                    <font fontName="Tw Cen MT" size="8"/>
+                    <font fontName="Trebuchet MS" size="10" isBold="true"/>
                 </textElement>
-                <text><![CDATA[DATE:]]></text>
-            </staticText>
-            <line>
-                <reportElement x="340" y="60" width="1" height="140" uuid="c01d5484-e59f-49b2-a771-8142d5451457"/>
-            </line>
-            <staticText>
-                <reportElement x="350" y="160" width="100" height="15" uuid="85b4990f-4801-4f67-a311-dfed2a066013"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="10"/>
-                </textElement>
-                <text><![CDATA[SEAT         :]]></text>
+                <text><![CDATA[Contact Customer Care]]></text>
             </staticText>
             <staticText>
-                <reportElement x="10" y="100" width="330" height="15" uuid="fa04047e-65c7-4a80-9b21-9538e03f9cf9">
-                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
-                    <property name="com.jaspersoft.studio.unit.x" value="px"/>
+                <reportElement x="0" y="165" width="109" height="10" forecolor="#6E6E6E" uuid="cdf4fef8-4dd2-47b0-8edc-aee11fa794a4">
+                    <property name="com.jaspersoft.studio.unit.y" value="px"/>
                 </reportElement>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="8"/>
+                <textElement>
+                    <font fontName="Trebuchet MS" size="6" isBold="false"/>
                 </textElement>
-                <text><![CDATA[NAME                    :]]></text>
+                <text><![CDATA[+007 342-542-432]]></text>
             </staticText>
             <staticText>
-                <reportElement x="10" y="120" width="330" height="15" uuid="b2857b9e-5582-464e-9a9a-e76bb1a2420a"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="8"/>
-                </textElement>
-                <text><![CDATA[START TIME          :]]></text>
-            </staticText>
-            <staticText>
-                <reportElement x="10" y="140" width="330" height="15" uuid="175d1f90-deda-43b7-a88c-1a2e4096f679"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="8"/>
-                </textElement>
-                <text><![CDATA[END TIME             :]]></text>
-            </staticText>
-            <staticText>
-                <reportElement x="10" y="160" width="330" height="15" uuid="22265d8d-9cf3-4bcf-a04b-897c7e99e8e9"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="8"/>
-                </textElement>
-                <text><![CDATA[SEAT                     :]]></text>
-            </staticText>
-            <staticText>
-                <reportElement x="10" y="180" width="330" height="15" uuid="503d3d0e-ac29-4b6c-a10f-2137323d1e19"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="8"/>
-                </textElement>
-                <text><![CDATA[PRICE                    :]]></text>
-            </staticText>
-            <textField>
-                <reportElement x="100" y="100" width="240" height="15" uuid="d248a252-e1a7-4efc-8eb0-119558cfb791"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="10"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement x="100" y="120" width="241" height="15" uuid="bdf8ed1a-44ff-4c87-b9dc-ce2cefb17ba6"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="10"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{startTime}.toLocalTime()]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement x="100" y="160" width="240" height="15" uuid="7ad3dcbb-d46a-47d8-a0ea-23ce31a43ba9"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="10"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{seat}]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement x="100" y="180" width="240" height="15" uuid="f8b2415a-28bb-4fe2-97cc-199f107ea96f"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="10"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement x="380" y="160" width="100" height="15" uuid="61b7b3bd-96f3-4cf2-9f6f-722fd3c41ac6"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="10"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{seat}]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement x="350" y="70" width="160" height="15" uuid="dcb55db3-3d1f-48fc-83d2-e700d711ef2b"/>
-                <textElement verticalAlignment="Top">
-                    <font fontName="Tw Cen MT" size="10"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{movieName}]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement x="100" y="70" width="240" height="15" uuid="6aa77c70-323d-4ba5-af4d-7d963961ab8d"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="10"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement x="350" y="100" width="100" height="15" uuid="01b6018f-f397-4491-8e42-d422d5093935"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="10"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement x="350" y="120" width="100" height="15" uuid="7f90786c-b5c7-4085-8877-62f03880c326"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="10"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement x="350" y="140" width="100" height="15" uuid="9108d23a-4bf1-4d4d-84bb-9cdbcc97f70b"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="10"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{startTime}.toLocalTime()]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement x="390" y="140" width="100" height="15" uuid="68066636-1403-4e27-a131-1961e1b75e04"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="10"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{endTime}.toLocalTime()]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement x="350" y="180" width="100" height="15" uuid="34950001-0fda-464b-ba5f-f3d696f9e229"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="10"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement x="100" y="140" width="241" height="15" uuid="0cf3eb05-de29-4ae4-8620-0fd8990b7687"/>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="Tw Cen MT" size="10"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{endTime}.toLocalTime()]]></textFieldExpression>
-            </textField>
-            <line>
-                <reportElement x="377" y="147" width="10" height="1" uuid="319946ef-e756-4306-a4aa-5c81f5725c5d">
-                    <property name="com.jaspersoft.studio.unit.width" value="px"/>
-                    <property name="com.jaspersoft.studio.unit.x" value="px"/>
+                <reportElement x="0" y="175" width="109" height="10" forecolor="#6E6E6E" uuid="3506ba70-a21b-4582-a73e-71957d3878a3">
+                    <property name="com.jaspersoft.studio.unit.y" value="px"/>
                 </reportElement>
-            </line>
+                <textElement>
+                    <font fontName="Trebuchet MS" size="6" isBold="false"/>
+                </textElement>
+                <text><![CDATA[wakandanesia@gmail.com]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="185" width="109" height="10" forecolor="#6E6E6E" uuid="95ea5c32-cd42-4144-b1d5-68150a9515d6">
+                    <property name="com.jaspersoft.studio.unit.y" value="px"/>
+                </reportElement>
+                <textElement>
+                    <font fontName="Trebuchet MS" size="6" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Yahoo.kandasia]]></text>
+            </staticText>
         </band>
     </detail>
-    <pageFooter>
-        <band height="54" splitType="Stretch">
-            <line>
-                <reportElement x="-20" y="5" width="595" height="1" uuid="826413a8-2363-4731-b024-23d79689df33"/>
-            </line>
-        </band>
-    </pageFooter>
 </jasperReport>

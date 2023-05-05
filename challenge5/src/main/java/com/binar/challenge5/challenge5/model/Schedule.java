@@ -1,6 +1,8 @@
 package com.binar.challenge5.challenge5.model;
 
+import com.binar.challenge5.challenge5.repository.ScheduleRepository;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.sql.Time;
@@ -16,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table
 public class Schedule {
+
     @Id
     @SequenceGenerator(name = "schedule_sequence", sequenceName = "schedule_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "schedule_sequence")
@@ -28,16 +31,12 @@ public class Schedule {
     private Long movieFk;
     private String[] seats;
 
-    public List<String> getSeats() {
-        List<String> temp = new ArrayList<>();
-        char var = 'A';
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                temp.add(String.valueOf(var + "" + (j + 1)));
-            }
-            var++;
-        }
-        return temp;
+    public String[] getSeats(String[] seats) {
+        return seats;
+    }
+
+    public void setSeats(String[] seats) {
+        this.seats = seats;
     }
 
     //    @OneToMany(cascade = CascadeType.ALL, targetEntity = Seat.class, orphanRemoval = true)

@@ -40,7 +40,7 @@ public class BookingController {
     public Booking postBooking(@RequestParam String email,
                                @RequestParam Long movieId,
                                @RequestParam Long scheduleId,
-                               @RequestParam String seat) throws JRException, FileNotFoundException {
+                               @RequestParam String[] seat) throws JRException, FileNotFoundException {
         return service.postBooking(email, movieId, scheduleId, seat);
     }
 
