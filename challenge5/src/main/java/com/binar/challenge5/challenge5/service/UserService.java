@@ -21,6 +21,8 @@ public class UserService {
         return repository.findAll();
     }
 
+    public User getById(Long id) { return repository.getById(id); }
+
     private static String getRand() {
         String saltChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
