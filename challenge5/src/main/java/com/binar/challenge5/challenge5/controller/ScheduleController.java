@@ -43,7 +43,7 @@ public class ScheduleController {
         return service.deleteByMovieCodeWhere(deleteMovieId);
     }
 
-    @GetMapping("/pagination")
+    @GetMapping(path = "/pagination")
     public ResponseEntity<MessageModelPagination> getDataPagination(@RequestParam(value = "page",defaultValue = "0") Integer page,
                                                                     @RequestParam(value = "size",defaultValue = "10") Integer size,
                                                                     @RequestParam(value = "sort", required=false) String sort,
@@ -69,7 +69,6 @@ public class ScheduleController {
             msg.setMessage(e.getMessage());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(msg);
         }
-
     }
 
 }
