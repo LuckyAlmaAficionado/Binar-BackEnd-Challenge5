@@ -4,6 +4,7 @@ import com.binar.challenge5.challenge5.model.Movie;
 import com.binar.challenge5.challenge5.repository.MovieRepository;
 import com.binar.challenge5.challenge5.service.MovieService;
 import com.binar.challenge5.challenge5.service.SortAscDesc;
+import com.binar.challenge5.challenge5.utils.MessageModel;
 import com.binar.challenge5.challenge5.utils.MessageModelPagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -84,6 +86,35 @@ public class MovieController {
             msg.setTotalPages(data.getTotalPages());
             msg.setTotalItems((int) data.getTotalElements());
             msg.setNumberOfElement(data.getNumberOfElements());
+
+            return ResponseEntity.status(HttpStatus.OK).body(msg);
+        } catch (Exception e) {
+            msg.setStatus(false);
+            msg.setMessage(e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(msg);
+        }
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<MessageModel> insertData(@RequestBody List<Movie> param) {
+        MessageModel msg = new MessageModel();
+        try {
+            List<Movie> movieList = new ArrayList<>();
+            for (Movie data : param) {
+                Movie movie = new Movie();
+
+                movie.setMovieId(data.getMovieId());
+                movie.setGenre(data.getGenre());
+                movie.setMovieName(data.getMovieName());
+                movie.setIsShowing(true);
+
+                movieList.add(movie);
+            }
+            movieRepository.saveAll(movieList);
+
+            msg.setStatus(true);
+            msg.setMessage("Success to inserted data..");
+            msg.setData(movieList);
 
             return ResponseEntity.status(HttpStatus.OK).body(msg);
         } catch (Exception e) {
