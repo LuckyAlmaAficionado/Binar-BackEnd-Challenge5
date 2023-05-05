@@ -17,14 +17,18 @@ import java.util.stream.Collectors;
 public class MovieService {
     @Autowired
     private MovieRepository repository;
+
     @Autowired
     private BookingRepository bookingRepository;
 
     @Autowired
     ScheduleRepository scheduleRepository;
+
     public List<Movie> getMovie() {
         return repository.findAll();
     }
+
+    public Movie getById(Long movieId) { return repository.getById(movieId); }
 
     public List<Movie> getMovieIsShowingTrue() {
         List<Movie> collect = repository.findByIsShowingTrue().stream()

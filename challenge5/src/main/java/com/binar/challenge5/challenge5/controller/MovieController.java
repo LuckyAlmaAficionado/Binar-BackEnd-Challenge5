@@ -36,6 +36,11 @@ public class MovieController {
         return service.getMovie();
     }
 
+    @GetMapping("{movieId}")
+    public Movie getById(Long movieId) {
+        return service.getById(movieId);
+    }
+
     @GetMapping(path = "/showing")
     public List<Movie> getMovieIsShowing() {
         return service.getMovieIsShowingTrue();
