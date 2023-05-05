@@ -59,6 +59,13 @@ public class Booking {
         this.status = status;
     }
 
+    public Booking(Long movieId, String codeBooking, String movieName, String username, String studio) {
+        this.movieId = movieId;
+        this.codeBooking = codeBooking;
+        this.movieName = movieName;
+        this.username = username;
+        this.studio = studio;
+    }
 
     public LocalDateTime getLastUpdate() {
         return LocalDateTime.now();
